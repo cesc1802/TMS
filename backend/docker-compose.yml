@@ -1,0 +1,53 @@
+version: "3.5"
+
+services:
+    app:
+        image: sample-node
+        build:
+            context: .
+            dockerfile: Dockerfile
+        command: ["yarn", "start"]
+        ports:
+            - "1802:1802"
+        volumes:
+            - ./src:/app/src
+        environment:
+            APP_PORT: 1802
+            JWT_SECRET: abcdef123456
+            DB_HOST: db
+            DB_PORT: 3306
+            DB_NAME: TMS
+            DB_USER: admin
+            DB_PASSWORD: etc12345
+        networks:
+            samplenode:
+        depends_on:
+            - db
+    db:
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_ROOT_PASSWORD: etc12345
+            MYSQL_DATABASE: TMS
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: etc12345
+        volumes:
+            - dbdata:/var/lib/mysql
+            - ./dbseeder:/docker-entrypoint-initdb.d
+        networks:
+            samplenode:
+                aliases:
+                    - db
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
+        networks:
+            samplenode:
+        depends_on:
+            - db
+networks:
+    samplenode:
+volumes:
+    dbdata:

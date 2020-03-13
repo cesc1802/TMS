@@ -1,0 +1,23 @@
+INSERT INTO roles(role_name) VALUES ('admin');
+insert into roles(role_name) VALUES ('supper admin');
+
+INSERT INTO users(username, password, role_id) VALUES ('admin', '$2b$10$nBdh023w6GLXpKMqZcMDqOx5BTKkgJbu.gPYXVY.SRmcjeHyRG9w2', 1);
+INSERT INTO users(username, password, role_id) VALUES ('root', '$2b$10$nBdh023w6GLXpKMqZcMDqOx5BTKkgJbu.gPYXVY.SRmcjeHyRG9w2', 2);
+
+INSERT INTO permissions(resource_id, action) VALUES (1, 'read');
+INSERT INTO permissions(resource_id, action) VALUES (1, 'create');
+INSERT INTO permissions(resource_id, action) VALUES (1, 'update');
+INSERT INTO permissions(resource_id, action) VALUES (1, 'delete');
+
+insert into permissions(resource, action) values ('roles', 'create');
+insert into permissions(resource, action) values ('roles', 'read');
+insert into permissions(resource, action) values ('roles', 'update');
+insert into permissions(resource, action) values ('roles', 'delete');
+
+insert into permissions(resource, action) values ('users', 'create');
+insert into permissions(resource, action) values ('users', 'read');
+
+insert into grants(role_id, sub_role_id, permission_id) VALUES (1, 2, 1);
+insert into grants(role_id, sub_role_id, permission_id) VALUES (1, 2, 1);
+insert into grants(role_id, sub_role_id, permission_id) VALUES (1, 2, 1);
+insert into grants(role_id, sub_role_id, permission_id) VALUES (1, 2, 1);

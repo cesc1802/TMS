@@ -1,0 +1,27 @@
+{
+    "name": "node-sample-rest",
+    "version": "1.0.0",
+    "description": "Sample rest api using Express, MariaDb and JWT",
+    "main": "src/app.js",
+    "author": "thuoc.nv",
+    "license": "MIT",
+    "scripts": {
+        "start": "nodemon src/app.js",
+        "dev": "docker-compose -p samplenode up --build"
+    },
+    "dependencies": {
+        "app-root-path": "~2.1.0",
+        "bcrypt": "^3.0.7",
+        "body-parser": "~1.18.3",
+        "cookie-parser": "^1.4.4",
+        "cors": "^2.8.5",
+        "express": "~4.16.3",
+        "glob": "~7.1.3",
+        "jsonwebtoken": "~8.3.0",
+        "knex": "^0.20.3",
+        "mysql2": "^2.0.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.2"
+    }
+}

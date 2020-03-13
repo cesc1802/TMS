@@ -1,0 +1,1 @@
+export { useFetchResourceList } from "./fetchResourceList";
